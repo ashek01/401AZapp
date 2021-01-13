@@ -84,22 +84,23 @@ namespace MYSQLConnector
         }
 
         private void BtRefresh_Click(object sender, EventArgs e)
-        {
+        {// run dataset fill in connector, return dataset to datagrid
 
             DgDBOut.DataSource = sqlCon.readAll().Tables[0];//specifies what table number you want to use
        
         }
 
         private void BtCreateSimple_Click(object sender, EventArgs e)
-        {
+        {//pass table text to connecter method to write to database, return if error present textbox
             if (!sqlCon.createName(TbCreateNameOnly.Text)); { MessageBox.Show("Error when inserting record"); }
+            BtRefresh_Click(BtCreateSimple, null);       
         }
 
         private void BtCreateComplex_Click(object sender, EventArgs e)
-        {
+        {//pass table text to connecter method to write to database, return if error present textbox
 
             if (!sqlCon.createNamePostcode(TbCreateName.Text, TbCreateNameOnly.Text)) ; { MessageBox.Show("Error when inserting record"); }
-
+            BtRefresh_Click(BtCreateComplex, null);
         }
 
         private void BtRead_Click(object sender, EventArgs e)
