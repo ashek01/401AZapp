@@ -89,5 +89,22 @@ namespace MYSQLConnector
             DgDBOut.DataSource = sqlCon.readAll().Tables[0];//specifies what table number you want to use
        
         }
+
+        private void BtCreateSimple_Click(object sender, EventArgs e)
+        {
+            if (!sqlCon.createName(TbCreateNameOnly.Text)); { MessageBox.Show("Error when inserting record"); }
+        }
+
+        private void BtCreateComplex_Click(object sender, EventArgs e)
+        {
+
+            if (!sqlCon.createNamePostcode(TbCreateName.Text, TbCreateNameOnly.Text)) ; { MessageBox.Show("Error when inserting record"); }
+
+        }
+
+        private void BtRead_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(sqlCon.getID(TbReadName.Text));
+        }
     }
 }
