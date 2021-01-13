@@ -61,15 +61,14 @@ namespace MYSQLConnector
                 {
                     PanSettings.Visible = false;
                     PanSQL.Visible = true;
+                    DgDBOut.DataSource = sqlCon.readAll().Tables[0];
                 }
                 else { MessageBox.Show("Connection error, \r\ncheck details"); }
-
-
             }
             else { MessageBox.Show("Please Enter Details"); }
-           
             //Confirm login, or show error
             //if correct, make next pannel visible (hide this one)
+            // populate datagrid
             
         }
         private void TbPassword_TextChanged(object sender, EventArgs e)
@@ -82,6 +81,13 @@ namespace MYSQLConnector
         {
             TbPassword.PasswordChar = '*';
             TbPassword.Text = "";
+        }
+
+        private void BtRefresh_Click(object sender, EventArgs e)
+        {
+
+            DgDBOut.DataSource = sqlCon.readAll().Tables[0];//specifies what table number you want to use
+       
         }
     }
 }
