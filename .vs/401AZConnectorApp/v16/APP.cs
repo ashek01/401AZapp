@@ -32,7 +32,8 @@ namespace MYSQLConnector
         private void setup()
         {//runs on form load and make my form organized for end user
             this.Size = new Size(452, 535);//resize form
-            PanSQL.Location = new Point(12, 12);//move the panels
+            PanSettings.Location = new Point(12, 12);//move the panels
+            Pan_HomePage.Visible = false;
             PanSettings.Visible = true;//show show pannels 
             PanSQL.Visible = false;//hide unshown pannels
             TbCreateName.Text = "Enter Name";
@@ -59,8 +60,13 @@ namespace MYSQLConnector
                 sqlCon.setConnectionString();
                 if (sqlCon.connTest())
                 {
+                    Pan_HomePage.Location = new Point(468, 12);
                     PanSettings.Visible = false;
-                    PanSQL.Visible = true;
+                    Pan_Contacts.Visible = false;
+                    Pan_Staff.Visible = false;
+                    Pan_Student.Visible = false;
+                    Pan_HomePage.Visible = true;
+                    PanSQL.Visible = false;
                     DgDBOut.DataSource = sqlCon.readAll().Tables[0];
                 }
                 else { MessageBox.Show("Connection error, \r\ncheck details"); }
@@ -106,6 +112,103 @@ namespace MYSQLConnector
         private void BtRead_Click(object sender, EventArgs e)
         {
             MessageBox.Show(sqlCon.getID(TbReadName.Text));
+        }
+
+        
+
+        private void Bt_Student_Click(object sender, EventArgs e)
+        {
+            Pan_Student.Location = new Point(468, 12);
+            Pan_Student.Visible = true;
+            PanSettings.Visible = false;
+            Pan_HomePage.Visible = false;
+            Pan_Staff.Visible = false;
+            Pan_Contacts.Visible = false;
+            PanSQL.Visible = false;
+            DgDBOut.DataSource = sqlCon.readAll().Tables[0];
+
+
+        }
+
+        private void DgDBOut_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Pan_HomePage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Pan_Staff_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Bt_Staff_Click(object sender, EventArgs e)
+        {
+            Pan_Staff.Location = new Point(468, 12);
+            Pan_Student.Visible = false;
+            PanSettings.Visible = false;
+            Pan_HomePage.Visible = false;
+            Pan_Staff.Visible = true;
+            Pan_Contacts.Visible = false;
+            PanSQL.Visible = false;
+            DgDBOut.DataSource = sqlCon.readAll().Tables[0];
+
+        }
+
+        private void Bt_Contacts_Click(object sender, EventArgs e)
+        {
+            Pan_Contacts.Location = new Point(468, 12);
+            Pan_Student.Visible = false;
+            PanSettings.Visible = false;
+            Pan_HomePage.Visible = false;
+            Pan_Staff.Visible = false;
+            Pan_Contacts.Visible = true;
+            PanSQL.Visible = false;
+            DgDBOut.DataSource = sqlCon.readAll().Tables[0];
+        }
+
+        private void Bt_Home_Click(object sender, EventArgs e)
+        {
+            Pan_HomePage.Location = new Point(468, 12);
+            Pan_Student.Visible = false;
+            PanSettings.Visible = false;
+            Pan_HomePage.Visible = true;
+            Pan_Staff.Visible = false;
+            Pan_Contacts.Visible = false;
+            PanSQL.Visible = false;
+            DgDBOut.DataSource = sqlCon.readAll().Tables[0];
+        }
+
+        private void Bt_Home2_Click(object sender, EventArgs e)
+        {
+            Pan_HomePage.Location = new Point(468, 12);
+            Pan_Student.Visible = false;
+            PanSettings.Visible = false;
+            Pan_HomePage.Visible = true;
+            Pan_Staff.Visible = false;
+            Pan_Contacts.Visible = false;
+            PanSQL.Visible = false;
+            DgDBOut.DataSource = sqlCon.readAll().Tables[0];
+        }
+
+        private void Bt_Home3_Click(object sender, EventArgs e)
+        {
+            Pan_HomePage.Location = new Point(468, 12);
+            Pan_Student.Visible = false;
+            PanSettings.Visible = false;
+            Pan_HomePage.Visible = true;
+            Pan_Staff.Visible = false;
+            Pan_Contacts.Visible = false;
+            PanSQL.Visible = false;
+            DgDBOut.DataSource = sqlCon.readAll().Tables[0];
         }
     }
 }
